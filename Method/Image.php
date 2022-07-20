@@ -4,7 +4,7 @@ namespace GDO\Favicon\Method;
 use GDO\Core\Method;
 use GDO\Favicon\Module_Favicon;
 use GDO\File\Method\GetFile;
-use GDO\Form\GDT_Select;
+use GDO\Core\GDT_Select;
 
 /**
  * Render a favicon image.
