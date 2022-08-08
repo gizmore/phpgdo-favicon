@@ -12,7 +12,7 @@ use GDO\Core\GDT_Select;
  */
 final class Image extends Method
 {
-	public function getTitle()
+	public function getMethodTitle() : string
 	{
 		return 'Favicon';
 	}
