@@ -6,7 +6,6 @@ use GDO\File\GDT_ImageFile;
 use GDO\Core\Website;
 use GDO\File\GDO_File;
 use GDO\UI\GDT_Image;
-use GDO\Core\GDT_Array;
 use GDO\Core\GDO_Error;
 
 /**
@@ -15,8 +14,9 @@ use GDO\Core\GDO_Error;
  * Convert to favicon.ico as well, which is not referenced in the html.
  * 
  * @author gizmore
- * @version 6.11.4
+ * @version 7.0.1
  * @since 6.9.0
+ * @deprecated sucks!
  */
 final class Module_Favicon extends GDO_Module
 {
@@ -115,9 +115,9 @@ final class Module_Favicon extends GDO_Module
 		}
 	}
 	
-	public function hookIgnoreDocsFiles(GDT_Array $ignore)
+	public function thirdPartyFolders(): array
 	{
-	    $ignore->data[] = 'GDO/Favicon/php-ico/**/*';
+	    return ['php-ico/'];
 	}
 	
 }
