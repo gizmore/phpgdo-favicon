@@ -1,6 +1,7 @@
 <?php
 namespace GDO\Favicon\Method;
 
+use GDO\Core\GDT;
 use GDO\Core\GDT_Select;
 use GDO\Core\Method;
 use GDO\Favicon\Module_Favicon;
@@ -28,7 +29,7 @@ final class Image extends Method
 		];
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		$image = Module_Favicon::instance()->cfgFavicon();
 		$variant = $this->gdoParameterVar('variant');
