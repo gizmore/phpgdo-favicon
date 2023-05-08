@@ -1,7 +1,7 @@
 <?php
 namespace GDO\Favicon;
 
-use GDO\Core\GDO_Error;
+use GDO\Core\GDO_Exception;
 use GDO\Core\GDO_Module;
 use GDO\Core\Website;
 use GDO\File\GDO_File;
@@ -86,11 +86,11 @@ final class Module_Favicon extends GDO_Module
 		# Copy as PNG
 		if (!($file = $this->cfgFavicon()))
 		{
-			throw new GDO_Error('err_file_not_found');
+			throw new GDO_Exception('err_file_not_found');
 		}
 		if (!$file->isImageType())
 		{
-			throw new GDO_Error('err_not_an_image', [$file->getPath(), $file->getType()]);
+			throw new GDO_Exception('err_not_an_image', [$file->getPath(), $file->getType()]);
 		}
 		elseif (!$this->isIco($file))
 		{
