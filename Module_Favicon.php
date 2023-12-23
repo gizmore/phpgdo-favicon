@@ -53,9 +53,9 @@ final class Module_Favicon extends GDO_Module
 			$root = GDO_WEB_ROOT;
 			$href = href('Favicon', 'Image');
 			Website::addHead(sprintf('<link rel="shortcut icon" href="%sfavicon.ico?v=%s" type="image/x-icon" />', $root, $v));
-			Website::addHead(sprintf('<link rel="icon" type="image/png" href="%s" />', $href . '?variant=favicon&v=' . $v));
+			Website::addHead(sprintf('<link rel="icon" type="image/png" href="%s" />', $href . '&variant=favicon&v=' . $v));
 			Website::addHead(sprintf('<link rel="apple-touch-icon" href="%s" />', $href . '&variant=appletouch&v=' . $v));
-			Website::addHead(sprintf('<meta property="og:image" content="%s" />', $href . "?v={$v}"));
+			Website::addHead(sprintf('<meta property="og:image" content="%s" />', $href . "&v={$v}"));
 		}
 	}
 
