@@ -6,6 +6,7 @@ use GDO\Core\GDO_Module;
 use GDO\Core\Website;
 use GDO\File\GDO_File;
 use GDO\File\GDT_ImageFile;
+use GDO\File\Method\CronjobImageVariants;
 use GDO\UI\GDT_Image;
 use PHP_ICO;
 
@@ -38,8 +39,8 @@ final class Module_Favicon extends GDO_Module
 		return [
 			GDT_ImageFile::make('favicon')->
 			previewHREF(href('Favicon', 'Image', '&variant=favicon'))->
-			minWidth(16)->maxWidth(512)->
-			minHeight(16)->maxHeight(512)->
+			minWidth(32)->maxWidth(1024)->
+			minHeight(32)->maxHeight(1024)->
 			scaledVersion('favicon', self::FAVICON_WIDTH, self::FAVICON_HEIGHT, GDT_Image::PNG)->
 			scaledVersion('appletouch', self::APPLE_TOUCH_WIDTH, self::APPLE_TOUCH_HEIGHT, GDT_Image::PNG),
 		];
@@ -100,6 +101,10 @@ final class Module_Favicon extends GDO_Module
 		{
 			copy($file->getPath(), 'favicon.ico');
 		}
+
+		# Module config image variants are not created by the normal upload path.
+		# Generate the browser and Apple sizes immediately after a favicon changes.
+		CronjobImageVariants::make()->run();
 	}
 
 	###############
